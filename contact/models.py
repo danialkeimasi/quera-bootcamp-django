@@ -54,3 +54,12 @@ class Contact(models.Model):
 
         if self.name.lower() == "bagher" and self.email == "":
             raise ValidationError("Bagher is not allowed.")
+
+
+class CSAT(models.Model):
+    rating = models.IntegerField()
+    comment = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.rating} - {self.comment}"

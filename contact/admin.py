@@ -18,3 +18,11 @@ class ContactAdmin(admin.ModelAdmin):
     @admin.display(description="Mark selected as unresolved")
     def mark_as_unresolved(self, request, queryset):
         queryset.update(resolved=False)
+
+
+@admin.register(models.CSAT)
+class CSATAdmin(admin.ModelAdmin):
+    list_display = ["rating", "comment", "created_at"]
+    list_filter = ["rating"]
+    search_fields = ["rating", "comment", "created_at"]
+    readonly_fields = ["created_at"]
