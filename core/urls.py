@@ -5,6 +5,8 @@ from . import converters, views
 
 register_converter(converters.DrinkConverter, "drink")
 
+app_name = "core"
+
 urlpatterns = [
     path("", views.index_view, name="index"),
     path("hello/<str:name>", views.hello_view, name="hello"),
