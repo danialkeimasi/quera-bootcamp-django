@@ -11,5 +11,5 @@ def contact_view(request: HttpRequest):
             form.save()
             return render(request, "contact/success.html")
     else:
-        form = ContactForm()
+        form = ContactForm(initial={"name": "Initial Name"})
     return render(request, "contact/contact.html", context={"form": form})
