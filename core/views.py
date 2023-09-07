@@ -1,15 +1,31 @@
 from uuid import UUID
 
 from django.http import HttpRequest
-from django.shortcuts import HttpResponse
+from django.shortcuts import HttpResponse, render
+from django.template.loader import render_to_string
 
 
 def index_view(request: HttpRequest):
-    return HttpResponse(f"Hello, world. You're at the {request.path_info}")
+    response_as_string = render_to_string("core/index.html", request=request)
+    return HttpResponse(response_as_string)
 
 
 def hello_view(request: HttpRequest, name: str):
-    return HttpResponse(f"Hello, {name.title()}. You're at the {request.path_info}")
+    reserved_names = [
+        "quera",
+        "bootcamp",
+        "college",
+        "contest",
+    ]
+    return render(
+        request,
+        "core/hello.html",
+        context={
+            "name": name,
+            "reserved_names": reserved_names,
+            "is_quera": name.lower() in reserved_names,
+        },
+    )
 
 
 def sum_view(request: HttpRequest, a: int, b: int):
