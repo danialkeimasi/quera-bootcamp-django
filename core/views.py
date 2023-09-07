@@ -22,3 +22,7 @@ def slug_view(request: HttpRequest, slug: str):
 
 def uuid_view(request: HttpRequest, uuid: UUID):
     return HttpResponse(f"UUID: {uuid}")
+
+
+def drink(request: HttpRequest, drink: str):
+    return HttpResponse(f"Drink: {drink}")
