@@ -35,6 +35,7 @@ class Contact(models.Model):
         blank=True,
         validators=[
             RegexValidator(r"^09[0-9]+$", "Phone number should be 11 digits and start with 09."),
+            MinLengthValidator(11),
         ],
     )
     message = models.TextField(
