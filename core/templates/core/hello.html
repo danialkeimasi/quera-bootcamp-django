@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load humanize core %}
 
 {% comment %}
   some multi-line comment
@@ -9,12 +10,15 @@
 {% block body %}
 <p>
   Hello {{ name|title }}. You're at the {{ request.path_info }}
+  {{ "Danial Keimasi"|echo_lower }}
 </p>
+  {{ block.super }}
 
 {% if is_quera %}
   <p>
     Wait, is that you Danial? It was told that all of these are Danial:
   </p>
+
   <ul>
     {% for reserved_name in reserved_names %}
 
